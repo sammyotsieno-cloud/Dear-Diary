@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Page -->
+    <path
+        android:fillColor="#FFFBF2"
+        android:pathData="M40,30H68A4,4 0 0 1 72,34V74A4,4 0 0 1 68,78H40A4,4 0 0 1 36,74V34A4,4 0 0 1 40,30Z" />
+
+    <!-- Ruled lines -->
+    <path
+        android:strokeColor="#A9C4DD"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:pathData="M46,42H67M46,49H67M46,56H60" />
+
+    <!-- Red margin -->
+    <path
+        android:strokeColor="#E9A3A3"
+        android:strokeWidth="1.2"
+        android:pathData="M42,34V74" />
+
+    <!-- Spiral binding -->
+    <path
+        android:strokeColor="#8E8A99"
+        android:strokeWidth="2.4"
+        android:strokeLineCap="round"
+        android:pathData="M44,27V33M52,27V33M60,27V33M68,27V33" />
+
+    <!-- Coin -->
+    <path
+        android:fillColor="#F2B632"
+        android:pathData="M66,61m-10,0a10,10 0 1,1 20,0a10,10 0 1,1 -20,0" />
+    <path
+        android:strokeColor="#C98A10"
+        android:strokeWidth="1.6"
+        android:pathData="M66,61m-6.5,0a6.5,6.5 0 1,1 13,0a6.5,6.5 0 1,1 -13,0" />
+    <path
+        android:strokeColor="#C98A10"
+        android:strokeWidth="1.6"
+        android:strokeLineCap="round"
+        android:pathData="M66,57.5V64.5" />
+</vector>
