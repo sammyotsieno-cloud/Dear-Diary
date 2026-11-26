@@ -71,6 +71,11 @@ fun BackupCard(vm: BackupViewModel = viewModel()) {
         }
     }
 
+    Spacer(Modifier.height(24.dp))
+    Text("Security", style = MaterialTheme.typography.titleLarge, color = InkBlue)
+    Spacer(Modifier.height(8.dp))
+    SecurityCard()
+
     pendingRestore?.let { uri ->
         AlertDialog(
             onDismissRequest = { pendingRestore = null },
