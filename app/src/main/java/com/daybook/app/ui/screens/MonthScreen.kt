@@ -133,6 +133,11 @@ fun MonthScreen(
             Spacer(Modifier.height(8.dp))
             CategoryCard(summary)
 
+            Spacer(Modifier.height(24.dp))
+            Text("Backup", style = MaterialTheme.typography.titleLarge, color = InkBlue)
+            Spacer(Modifier.height(8.dp))
+            BackupCard()
+
             Spacer(Modifier.height(32.dp))
         }
     }
