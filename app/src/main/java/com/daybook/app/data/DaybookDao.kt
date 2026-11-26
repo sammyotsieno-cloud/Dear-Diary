@@ -3,6 +3,7 @@ package com.daybook.app.data
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import androidx.room.Upsert
@@ -39,4 +40,23 @@ interface DaybookDao {
 
     @Delete
     suspend fun deleteMoney(entry: MoneyEntry)
+
+    // ----- Backup / restore -----
+    @Query("SELECT * FROM diary_entries ORDER BY date")
+    suspend fun getAllDiary(): List<DiaryEntry>
+
+    @Query("SELECT * FROM money_entries ORDER BY id")
+    suspend fun getAllMoney(): List<MoneyEntry>
+
+    @Query("DELETE FROM diary_entries")
+    suspend fun clearDiary()
+
+    @Query("DELETE FROM money_entries")
+    suspend fun clearMoney()
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertDiaryAll(entries: List<DiaryEntry>)
+
+    @Insert
+    suspend fun insertMoneyAll(entries: List<MoneyEntry>)
 }
