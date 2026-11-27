@@ -67,6 +67,7 @@ fun DayScreen(viewModel: DaybookViewModel, onOpenCalendar: () -> Unit) {
             .imePadding()
     ) {
         SpiralBinding()
+        GreetingBar()
         DayHeader(
             date = date,
             onPrev = { viewModel.setDate(date.minusDays(1)) },
