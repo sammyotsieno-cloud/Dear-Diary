@@ -13,14 +13,40 @@ android {
         applicationId = "com.daybook.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        // Goes up with every GitHub build, so Android always sees an update.
+        val buildNumber = System.getenv("GITHUB_RUN_NUMBER")?.toIntOrNull() ?: 1
+        versionCode = buildNumber
+        versionName = "1.0.$buildNumber"
+    }
+
+    signingConfigs {
+        create("daybook") {
+            val path = System.getenv("KEYSTORE_PATH")
+            if (path != null) {
+                storeFile = file(path)
+                storePassword = System.getenv("KEYSTORE_PASSWORD")
+                keyAlias = "daybook"
+                keyPassword = System.getenv("KEYSTORE_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            if (System.getenv("KEYSTORE_PATH") != null) {
+                signingConfig = signingConfigs.getByName("daybook")
+            }
         }
+        debug {
+            if (System.getenv("KEYSTORE_PATH") != null) {
+                signingConfig = signingConfigs.getByName("daybook")
+            }
+        }
+    }
+
+    lint {
+        checkReleaseBuilds = false
     }
 
     compileOptions {
@@ -37,6 +63,7 @@ android {
 
 dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
+    implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("androidx.activity:activity-compose:1.9.3")
